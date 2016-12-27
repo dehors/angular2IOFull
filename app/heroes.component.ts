@@ -16,16 +16,14 @@ export class HeroesComponent implements OnInit {
   constructor(private router: Router,private heroService: HeroService) { }
 
   //obtener la informacion
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-  }
   ngOnInit(): void {
-    this.getHeroes();
+    this.heroService.getHeroes()
+      .then(heroes => this.heroes = heroes);
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
-gotoDetail(): void {
-  this.router.navigate(['/detail', this.selectedHero.id]);
-}
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedHero.id]);
+  }
 }
