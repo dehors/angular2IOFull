@@ -10,6 +10,7 @@ import { AppComponent }        from './app.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { DashboardComponent }  from './dashboard.component';
 import { HeroesComponent }     from './heroes.component';
+import { ErrorComponent }     from './ErrorComponent.component';
 import { HeroService }         from './hero.service';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HeroService }         from './hero.service';
     AppComponent,
     DashboardComponent,
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    ErrorComponent
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]

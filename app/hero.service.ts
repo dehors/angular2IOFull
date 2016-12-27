@@ -10,7 +10,7 @@ export class HeroService {
     return this.getHeroes()
               .then(heroes => heroes.find(hero => hero.id === id))
               .catch(error => {
-                // Handle errors of asyncFunc1() and asyncFunc2()
+                console.log('error');
               });
   }
 }

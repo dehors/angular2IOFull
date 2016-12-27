@@ -21,9 +21,16 @@ export class HeroDetailComponent implements OnInit {
   ) {}
   @Input() hero: Hero; //actualiza automaticamente la variable
   ngOnInit(): void {
-  this.route.params
-    .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-    .subscribe(hero => this.hero = hero);
+    let id = +this.route.snapshot.params['id'];//THE NO-OBSERVABLE ALTERNATIVE
+    this.heroService.getHero(id)
+      .then((hero: Hero) => this.hero = hero)
+      .catch(error => {
+        console.log('error');
+      });
+      
+  // this.route.params
+  //   .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+  //   .subscribe(hero => this.hero = hero);
   }
   goBack(): void {
     this.location.back();
