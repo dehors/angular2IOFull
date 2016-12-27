@@ -18,7 +18,10 @@ export class HeroesComponent implements OnInit {
   //obtener la informacion
   ngOnInit(): void {
     this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes);
+      .then(heroes => this.heroes = heroes)
+      .catch(error => {
+        // Handle errors of asyncFunc1() and asyncFunc2()
+      });
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;

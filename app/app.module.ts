@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
+//Se usa como los ngmodels de angular 1
 import { HttpModule }   from '@angular/http';
 
 import { AppRoutingModule }     from './app-routing.module';

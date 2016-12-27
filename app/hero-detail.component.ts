@@ -19,8 +19,7 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location
   ) {}
-  @Input()
-  hero: Hero;
+  @Input() hero: Hero; //actualiza automaticamente la variable
   ngOnInit(): void {
   this.route.params
     .switchMap((params: Params) => this.heroService.getHero(+params['id']))

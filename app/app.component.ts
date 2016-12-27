@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-@Component({
+@Component({ //Esto es un decorador del componenete
   selector: 'my-app',
   template: `
   <h1>{{title}}</h1>
@@ -11,6 +11,6 @@ import { Component } from '@angular/core';
   `,
   styleUrls: [ '../../app/app.component.css' ]
 })
-export class AppComponent {
+export class AppComponent {//clase del componente
   title = 'Tour of Heroes';
 }

@@ -8,6 +8,9 @@ export class HeroService {
   }
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
-              .then(heroes => heroes.find(hero => hero.id === id));
+              .then(heroes => heroes.find(hero => hero.id === id))
+              .catch(error => {
+                // Handle errors of asyncFunc1() and asyncFunc2()
+              });
   }
 }
