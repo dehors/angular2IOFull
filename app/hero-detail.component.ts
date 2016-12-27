@@ -1,36 +1,36 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
-
+import { Component, OnInit }      from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location }               from '@angular/common';
+import { Hero }        from './hero';
 import { HeroService } from './hero.service';
-import { Hero } from './hero';
-
 @Component({
   moduleId: module.id,
   selector: 'my-hero-detail',
   templateUrl: '../../app/hero-detail.component.html',
   styleUrls: [ '../../app/hero-detail.component.css' ]
 })
-
 export class HeroDetailComponent implements OnInit {
+  hero: Hero;
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
-  @Input() hero: Hero; //actualiza automaticamente la variable
   ngOnInit(): void {
-    let id = +this.route.snapshot.params['id'];//THE NO-OBSERVABLE ALTERNATIVE
-    this.heroService.getHero(id)
-      .then((hero: Hero) => this.hero = hero)
-      .catch(error => {
-        console.log('error');
-      });
-      
-  // this.route.params
-  //   .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-  //   .subscribe(hero => this.hero = hero);
+    // let id = +this.route.snapshot.params['id'];//THE NO-OBSERVABLE ALTERNATIVE
+    // this.heroService.getHero(id)
+    //   .then((hero: Hero) => this.hero = hero)
+    //   .catch(error => {
+    //     console.log('error');
+    //   });
+    this.route.params
+      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+      .subscribe(hero => this.hero = hero);
+  }
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() => this.goBack());
   }
   goBack(): void {
     this.location.back();
